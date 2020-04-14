@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MIT Tunnel</title>
+    <title>Tunnel66</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,10 +24,46 @@ img {
   top: 200px;
 }
 
+#room0 {
+  position: relative;
+  max-height: calc(100vh - 100px);
+}
+
+#desc {
+  position: absolute;
+  top: 5%;
+  left: 28%;
+  width: 58%;
+  background: rgba(255,255,255,0.75);
+  font-size: 100%;
+}
+ 
+#subHead {
+  font-size: 80%;
+}
+
 </style>
 </head>
 
 <img src="template.png" id="room0">
+<div id="desc">
+	<h3>Tunnel66: <span id="subHead">isolation, together.</span></h3>
+
+	<p>Tunnels connect many of MIT's buildings, and they can even connect a community in quarantine.
+	Inspired by <a href="https://coronamaison.fun" target="_corona">Corona Maison</a>, 
+	Tunnel66 is a place to gather and showcase the unique cultures of current and prospective MIT students, 
+	in lieu of <a href="https://admitted.mit.edu/experience" target="_cpw">CPW</a>. 
+	Click on each room below to learn more about the artist!</p>
+
+	<p><a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">Submissions</a> are open; download the <a href="./template.png" target="_template">template</a>.</p>
+	
+	<p>Tunnel66 is created and maintained by <a href="https://arts.mit.edu/artists/the-borderline/#about-the-project" target="_borderline">Borderline</a>, 
+	the student organization responsible for augmented reality murals in the tunnels under Building 66.
+  </p>
+	
+	Contact: <a href="mailto:borderline-team@mit.edu?Subject=Tunnel66" target="_mail">borderline-team@mit.edu</a><br>
+</div>
+
 <div id="wall"></div>
 
 <div class="modal fade" id="intromodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -76,7 +112,7 @@ function popIntro(target){
   $("img").removeClass("selected");
   target.classList.add("selected");
   // load intro text and popup intro dialog
-  $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.txt" ></object>');
+  $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
   $('#intromodal').modal('show');
 }
 </script>
