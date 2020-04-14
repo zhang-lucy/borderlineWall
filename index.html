@@ -1,93 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Tunnel66</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Tunnel66</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <link rel='icon' href='circleLogo.png' type='image/x-icon'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel='icon' href='circleLogo.png' type='image/x-icon'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-<style>
-img {
-  width: 100%;
-}
+  <style>
+    img {
+      width: 100%;
+    }
 
-.selected {
-  border: 5px solid yellow;
-}
+    .selected {
+      border: 5px solid yellow;
+    }
 
-.modal-dialog,
-.modal-content {
-  top: 5%;
-  height: 70%;
-}
+    .modal-dialog {
+      top: 5%;
+      left: 2%;
+    }
 
-object {
-  width: 100%;
-  height: calc(75vh);
-}
+    object {
+      width: 100%;
+      height: calc(65vh);
+    }
 
-#room0 {
-  position: relative;
-  max-height: calc(100vh - 100px);
-}
+    #room0 {
+      position: relative;
+      max-height: calc(100vh - 100px);
+    }
 
-#desc {
-  position: absolute;
-  top: 3%;
-  left: 28%;
-  width: 65%;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 2vw;
-}
- 
-h4 {
-  color:rgb(177, 0, 0);
-  font-size:4vw;
-}
- 
-#subHead {
-  font-size:3vw;
-}
+    #desc {
+      position: absolute;
+      top: 3%;
+      left: 28%;
+      width: 65%;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 2vw;
+    }
 
-</style>
+    h4 {
+      color: rgb(177, 0, 0);
+      font-size: 4vw;
+    }
+
+    #subHead {
+      font-size: 3vw;
+    }
+  </style>
 </head>
 
 <img src="template.png" id="room0">
 <div id="desc">
   <h4>Tunnel66: <span id="subHead">isolation, together.</span></h4>
 
-	<p>
-  Tunnels connect many of MIT's buildings, and they can even connect a community in quarantine.
-	Inspired by <a href="https://coronamaison.fun" target="_corona">Corona Maison</a>, 
-	Tunnel66 is a place to gather and showcase the unique cultures of current and prospective MIT students, 
-	in lieu of <a href="https://admitted.mit.edu/experience" target="_cpw">CPW</a>. 
-	Click on a room to learn more about the artist!
+    Tunnels connect many of MIT's buildings, and they can even connect a community in quarantine.
+    Inspired by <a href="https://coronamaison.fun" target="_corona">Corona Maison</a>,
+    Tunnel66 is a place to gather and showcase the unique cultures of current and prospective MIT students,
+    in lieu of <a href="https://admitted.mit.edu/experience" target="_cpw">CPW</a>. 
+    Each student adds a room to Tunnel66, forming one connected tunnel below. Click on a room to learn more about the artist!
 
-  <br><br>
-	<a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">Submissions</a> are open; download the <a href="./template.png" target="_template">template</a>.
-  
-  <br><br>
-	Tunnel66 is created and maintained by <a href="https://arts.mit.edu/artists/the-borderline/#about-the-project" target="_borderline">Borderline</a>, 
-  the student organization responsible for augmented reality murals in the tunnels under Building 66.
-  Contact: <a href="mailto:borderline-team@mit.edu?Subject=Tunnel66" target="_mail">borderline-team@mit.edu</a>
-	
+    <br><br>
+    <a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">Submissions</a> are open. 
+    To join, read <a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">FAQ</a> 
+    and download the <a href="./template.png" target="_template">template</a>.
+
+    <br><br>
+    Made with love by <a href="https://arts.mit.edu/artists/the-borderline/#about-the-project"
+      target="_borderline">MIT Borderline</a>,
+    the student group responsible for augmented reality murals in the tunnels under Building 66.<Br>
+    Contact: <a href="mailto:borderline-team@mit.edu?Subject=Tunnel66" target="_mail">borderline-team@mit.edu</a>
+
 
 </div>
 
 <div id="wall"></div>
 
-<div class="modal fade" id="intromodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="intromodal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" onclick='$("img").removeClass("selected");'>
-		<span aria-hidden="true">&times;</span><span
-            class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal" onclick="clearSelection();">&times;</button>
         <div id="intro"></div>
       </div>
     </div>
@@ -96,39 +95,44 @@ h4 {
 
 
 <script>
-const maxRoom = 5;
-var arr = [];
+  const maxRoom = 5;
+  var arr = [];
 
-$(document).ready(function(){
-  // generate array
-  for (i = 1; i <= maxRoom; i++) {
-     arr.push(i);
-  }
-  // shuffle
-  shuffle(arr);
-  // add room based on shuffled arr values
-  arr.forEach(addRoom);
-});
+  $(document).ready(function () {
+    // generate array
+    for (i = 1; i <= maxRoom; i++) {
+      arr.push(i);
+    }
+    // shuffle
+    shuffle(arr);
+    // add room based on shuffled arr values
+    arr.forEach(addRoom);
+  });
 
-function shuffle(arr){
-  for (var j, x, i = arr.length; i; 
-      j = parseInt(Math.random() * i), 
+  function shuffle(arr) {
+    for (var j, x, i = arr.length; i;
+      j = parseInt(Math.random() * i),
       x = arr[--i], arr[i] = arr[j], arr[j] = x
-  );
-  return arr;
-}
+    );
+    return arr;
+  }
 
-function addRoom(i){
-  $("#wall").append('<img src="./rooms/room' + i + '.png" id="room' + i + '" onclick="popIntro(this);">');
-}
+  function clearSelection() {
+    $("img").removeClass("selected");
+  }
 
-function popIntro(target){
-  // visualize selection
-  $("img").removeClass("selected");
-  target.classList.add("selected");
-  // load intro text and popup intro dialog
-  $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
-  $('#intromodal').modal('show');
-}
+  function addRoom(i) {
+    $("#wall").append('<img src="./rooms/room' + i + '.png" id="room' + i + '" onclick="popIntro(this);">');
+  }
+
+  function popIntro(target) {
+    // visualize selection
+    $("img").removeClass("selected");
+    target.classList.add("selected");
+    // load intro text and popup intro dialog
+    $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
+    $('#intromodal').modal('show');
+  }
 </script>
+
 </html>
