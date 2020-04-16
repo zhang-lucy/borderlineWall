@@ -39,6 +39,13 @@
       max-height: calc(100vh - 100px);
     }
 
+    #contacts {
+      position: absolute;
+      top: 5%;
+      left: 4%;
+      width: 5%;
+    }
+
     #desc {
       position: absolute;
       top: 3%;
@@ -57,25 +64,73 @@
       font-size: 3vw;
     }
   </style>
+
+  <script>
+    const maxRoom = 6;
+    var arr = [];
+
+    $(document).ready(function () {
+      // generate array
+      for (i = 1; i <= maxRoom; i++) {
+        arr.push(i);
+      }
+      // shuffle
+      shuffle(arr);
+      // add room based on shuffled arr values
+      arr.forEach(addRoom);
+    });
+
+    function shuffle(arr) {
+      for (var j, x, i = arr.length; i;
+        j = parseInt(Math.random() * i),
+        x = arr[--i], arr[i] = arr[j], arr[j] = x
+      );
+      return arr;
+    }
+
+    function clearSelection() {
+      $("img").removeClass("selected");
+    }
+
+    function addRoom(i) {
+      $("#wall").append('<img src="./rooms/room' + i + '.png" id="room' + i + '" onclick="popIntro(this);">');
+    }
+
+    function popIntro(target) {
+      // visualize selection
+      $("img").removeClass("selected");
+      target.classList.add("selected");
+      // load intro text and popup intro dialog
+      $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
+      $('#intromodal').modal('show');
+    }
+  </script>
 </head>
 
 <img src="template.png" id="room0">
+
+<div id="contacts">
+  <p><a href="https://www.theborderline.net/" target="_bl"><img alt="Borderline" src="circleLogo.png"></a></p>
+  <p><a href="https://www.instagram.com/mitborderline/" target="_ig"><img alt="Instagram" src="https://image.flaticon.com/icons/svg/174/174855.svg"></a></p>
+  <a href="https://www.facebook.com/mitborderline/" target="_fb"><img alt="Facebook" src="https://image.flaticon.com/icons/svg/124/124010.svg"></a>
+</div>
+
 <div id="desc">
   <h4>Tunnel66: <span id="subHead">isolation, together.</span></h4>
 
   <p>Tunnels connect many of MIT's buildings, and they can even connect a community in quarantine.
-  Inspired by <a href="https://coronamaison.fun" target="_corona">Corona Maison</a>,
-  Tunnel66 is a place to gather and showcase the unique cultures of the MIT and adMIT communities,
-  in lieu of <a href="https://admitted.mit.edu/experience" target="_cpw">CPW</a>.
-  Each person adds a room to Tunnel66, forming one connected tunnel below. <b>Click on a room to learn more about the
-  artist!</b></p>
+    Inspired by <a href="https://coronamaison.fun" target="_corona">Corona Maison</a>,
+    Tunnel66 is a place to gather and showcase the unique cultures of the MIT and adMIT communities,
+    in lieu of <a href="https://admitted.mit.edu/experience" target="_cpw">CPW</a>.
+    Each person adds a room to Tunnel66, forming one connected tunnel below. <b>Click on a room to learn more about the
+      artist!</b></p>
 
   <b>To join Tunnel66, read <a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">FAQ</a>,
-  download the <a href="./template.png" target="_template">template</a>,
-  and <a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">submit</a>.</b>
-  <br> 
+    download the <a href="./template.png" target="_template">template</a>,
+    and <a href="https://forms.gle/aPD3rkG2edknmu589" target="_submit">submit</a>.</b>
+  <br>
   Made with love by <a href="https://arts.mit.edu/artists/the-borderline/#about-the-project" target="_borderline">MIT
-  Borderline</a>, the student group responsible for augmented reality murals in the tunnels under Building 66.
+    Borderline</a>, the student group responsible for augmented reality murals in the tunnels under Building 66.
   <br>
   Contact: <a href="mailto:borderline-team@mit.edu?Subject=Tunnel66" target="_mail">borderline-team@mit.edu</a>
 </div>
@@ -92,47 +147,5 @@
     </div>
   </div>
 </div>
-
-
-<script>
-  const maxRoom = 6;
-  var arr = [];
-
-  $(document).ready(function () {
-    // generate array
-    for (i = 1; i <= maxRoom; i++) {
-      arr.push(i);
-    }
-    // shuffle
-    shuffle(arr);
-    // add room based on shuffled arr values
-    arr.forEach(addRoom);
-  });
-
-  function shuffle(arr) {
-    for (var j, x, i = arr.length; i;
-      j = parseInt(Math.random() * i),
-      x = arr[--i], arr[i] = arr[j], arr[j] = x
-    );
-    return arr;
-  }
-
-  function clearSelection() {
-    $("img").removeClass("selected");
-  }
-
-  function addRoom(i) {
-    $("#wall").append('<img src="./rooms/room' + i + '.png" id="room' + i + '" onclick="popIntro(this);">');
-  }
-
-  function popIntro(target) {
-    // visualize selection
-    $("img").removeClass("selected");
-    target.classList.add("selected");
-    // load intro text and popup intro dialog
-    $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
-    $('#intromodal').modal('show');
-  }
-</script>
 
 </html>
