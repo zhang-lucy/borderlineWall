@@ -15,6 +15,47 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+  <script>
+    const maxRoom = 7;
+    var arr = [];
+
+    $(document).ready(function () {
+      // generate array
+      for (i = 1; i <= maxRoom; i++) {
+        arr.push(i);
+      }
+      // shuffle
+      shuffle(arr);
+      // add room based on shuffled arr values
+      arr.forEach(addRoom);
+    });
+
+    function shuffle(arr) {
+      for (var j, x, i = arr.length; i;
+        j = parseInt(Math.random() * i),
+        x = arr[--i], arr[i] = arr[j], arr[j] = x
+      );
+      return arr;
+    }
+
+    function clearSelection() {
+      $("img").removeClass("selected");
+    }
+
+    function addRoom(i) {
+      $("#wall").append('<img src="./rooms/room' + i + '.png" id="room' + i + '" onclick="popIntro(this);">');
+    }
+
+    function popIntro(target) {
+      // visualize selection
+      $("img").removeClass("selected");
+      target.classList.add("selected");
+      // load intro text and popup intro dialog
+      $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
+      $('#intromodal').modal('show');
+    }
+  </script>
+
   <style>
     img {
       width: 100%;
@@ -64,47 +105,6 @@
       font-size: 3vw;
     }
   </style>
-
-  <script>
-    const maxRoom = 6;
-    var arr = [];
-
-    $(document).ready(function () {
-      // generate array
-      for (i = 1; i <= maxRoom; i++) {
-        arr.push(i);
-      }
-      // shuffle
-      shuffle(arr);
-      // add room based on shuffled arr values
-      arr.forEach(addRoom);
-    });
-
-    function shuffle(arr) {
-      for (var j, x, i = arr.length; i;
-        j = parseInt(Math.random() * i),
-        x = arr[--i], arr[i] = arr[j], arr[j] = x
-      );
-      return arr;
-    }
-
-    function clearSelection() {
-      $("img").removeClass("selected");
-    }
-
-    function addRoom(i) {
-      $("#wall").append('<img src="./rooms/room' + i + '.png" id="room' + i + '" onclick="popIntro(this);">');
-    }
-
-    function popIntro(target) {
-      // visualize selection
-      $("img").removeClass("selected");
-      target.classList.add("selected");
-      // load intro text and popup intro dialog
-      $('#intro').html('<object type="text/html" data="./rooms/' + target.id + '.html" ></object>');
-      $('#intromodal').modal('show');
-    }
-  </script>
 </head>
 
 <img src="template.png" id="room0">
