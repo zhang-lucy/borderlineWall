@@ -1,11 +1,11 @@
 # Welcome to Tunnel66
-Hosted at [tunnels.mit.edu](http://tunnel.mit.edu/)
+Hosted at [tunnel.mit.edu](http://tunnel.mit.edu/)
 
 **Updating Rooms:**
 To add a room,
 1) save the image as png and the text as html following the examples in the rooms folder. Don't forget to include the social media links in the html if applicable. Follow the naming convention of room**X** for both files where **X** is the index of the entry in the Tunnel66 Submission Form responses spreadsheet (in Borderline Drive). 
 
-2) Change line 102 of index.html to set maxRoom to **X** (the number of the latest entry).
+2) change index.html to set maxRoom to **X** (the number of the latest entry).
   
 3) git pull in Borderline AFS locker
 
