@@ -19,7 +19,19 @@ object {
 }
 
 .inline-block {
+  width: 50%;
+  position: middle;
   display: inline-block;
+}
+
+.icon {
+  text-align: center;
+  width: 24px;
+  height: 24px;
+}
+
+.row {
+  text-align: center;
 }
 
 .modal-dialog {
@@ -28,7 +40,7 @@ object {
 }
 
 .room{
-  font-family:"Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
 }
 
